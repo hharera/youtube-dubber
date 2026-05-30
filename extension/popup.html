@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 320px;
+        font-family: system-ui, -apple-system, sans-serif;
+        padding: 12px;
+        margin: 0;
+      }
+      h3 { margin: 0 0 10px; }
+      label { display: block; margin-top: 10px; font-size: 13px; font-weight: 600; }
+      select, input { width: 100%; box-sizing: border-box; padding: 6px; margin-top: 4px; }
+      .row { display: flex; gap: 8px; }
+      .row > div { flex: 1; }
+      button {
+        width: 100%; margin-top: 12px; padding: 9px; cursor: pointer;
+        border: 0; border-radius: 6px; font-weight: 600;
+      }
+      #startBtn { background: #0b57d0; color: #fff; }
+      #stopBtn { background: #eee; }
+      #status { margin: 10px 0 0; font-size: 12px; color: #444; min-height: 16px; white-space: pre-wrap; }
+    </style>
+  </head>
+  <body>
+    <h3>Supertonic Dubber</h3>
+
+    <label for="targetLang">Dub into</label>
+    <select id="targetLang">
+      <option value="ar|Arabic">Arabic</option>
+      <option value="en|English">English</option>
+      <option value="es|Spanish">Spanish</option>
+      <option value="fr|French">French</option>
+      <option value="de|German">German</option>
+      <option value="it|Italian">Italian</option>
+      <option value="pt|Portuguese">Portuguese</option>
+      <option value="ru|Russian">Russian</option>
+      <option value="hi|Hindi">Hindi</option>
+      <option value="ja|Japanese">Japanese</option>
+      <option value="ko|Korean">Korean</option>
+      <option value="tr|Turkish">Turkish</option>
+      <option value="id|Indonesian">Indonesian</option>
+      <option value="vi|Vietnamese">Vietnamese</option>
+    </select>
+
+    <label for="voice">Voice</label>
+    <select id="voice">
+      <option value="M1">Male 1 (M1)</option>
+      <option value="M2">Male 2 (M2)</option>
+      <option value="M3">Male 3 (M3)</option>
+      <option value="M4">Male 4 (M4)</option>
+      <option value="M5">Male 5 (M5)</option>
+      <option value="F1">Female 1 (F1)</option>
+      <option value="F2">Female 2 (F2)</option>
+      <option value="F3">Female 3 (F3)</option>
+      <option value="F4">Female 4 (F4)</option>
+      <option value="F5">Female 5 (F5)</option>
+    </select>
+
+    <div class="row">
+      <div>
+        <label for="speed">Base speed</label>
+        <input id="speed" type="number" min="0.7" max="2" step="0.05" value="1.0" />
+      </div>
+      <div>
+        <label for="steps">Quality (steps)</label>
+        <input id="steps" type="number" min="5" max="12" step="1" value="8" />
+      </div>
+    </div>
+
+    <label for="srt">Paste SRT (optional — overrides video captions)</label>
+    <textarea id="srt" rows="4" placeholder="1
+00:00:00,080 --> 00:00:01,959
+First line of the source transcript…"
+      style="width:100%;box-sizing:border-box;padding:6px;margin-top:4px;font-family:monospace;font-size:11px;"></textarea>
+
+    <label for="pauseToSync">
+      <input id="pauseToSync" type="checkbox" checked style="width:auto;margin-right:6px;" />
+      Pause video if a chunk isn't ready yet
+    </label>
+
+    <button id="startBtn">Start dubbing</button>
+    <button id="stopBtn">Stop</button>
+
+    <p id="status"></p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# Secrets — never commit real env files (keep .env.example only)
+.env
+.env.*
+!.env.example
+
+# Dependencies / build artifacts
+node_modules/
+.venv/
+
+# OS / editor cruft
+.DS_Store
